@@ -1,0 +1,46 @@
+{
+  "name": "grunt-htmlurlrev",
+  "description": "Change asset paths inside html files based on output from grunt-filerev, grunt-hashmap, or other similar plugins",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jbuiss0n/grunt-htmlurlrev",
+  "author": {
+    "name": "Jérémy Buisson",
+    "email": "jeremy.buisson@live.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jbuiss0n/grunt-htmlurlrev.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jbuiss0n/grunt-htmlurlrev/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/jbuiss0n/grunt-htmlurlrev/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "dependencies": {
+    "path": "~0.4.9"
+  }
+}
