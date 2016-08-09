@@ -1,7 +1,7 @@
 {
   "name": "grunt-htmlurlrev",
   "description": "Change asset paths inside html files based on output from grunt-filerev, grunt-hashmap, or other similar plugins",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/jbuiss0n/grunt-htmlurlrev",
   "author": {
     "name": "Jérémy Buisson",
