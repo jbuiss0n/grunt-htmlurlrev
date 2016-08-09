@@ -53,28 +53,48 @@ module.exports = function (grunt) {
       var html = grunt.file.read(file);
       var original = html;
       // find urls, do not inlude inlined data URIs
-      var matches = html.match(/<img[^\>]*[^\>\S]+src=['"]([^'"\)#]+)(#.+)?["']/gm);
+      var imgMatches = html.match(/<img[^\>]*[^\>\S]+src=['"]([^'"\)#]+)(#.+)?["']/gm);
+      var posterMatches = html.match(/<video[^\>]*[^\>\S]+poster=['"]([^'"\)#]+)(#.+)?["']/gm);
 
-      if (!matches) {
-        return;
+      if (imgMatches) {
+        imgMatches.forEach(function (original_url) {
+          // url matches need to be trimmed
+          // possible example: "url('../fonts/iconfont/iconfont.eot?#iefix')"
+          // trim the beginning and end, potentially leading slashes and ../
+          original_url = original_url.replace(/<img[^\>]*[^\>\S]+src=['"](\.\.\/)*\/?([^'"\)#]+)(#.+)?["']/, '$2');
+          if (original_url in url_map) {
+            var new_url = url_map[original_url];
+            if (options.hashmap_rename) {
+              new_url = hashmapRename(original_url);
+            }
+            if (options.prefix) {
+              new_url = options.prefix + new_url;
+            }
+            html = html.replace(original_url, new_url);
+          }
+        });
       }
 
-      matches.forEach(function (original_url) {
-        // url matches need to be trimmed
-        // possible example: "url('../fonts/iconfont/iconfont.eot?#iefix')"
-        // trim the beginning and end, potentially leading slashes and ../
-        original_url = original_url.replace(/<img[^\>]*[^\>\S]+src=['"](\.\.\/)*\/?([^'"\)#]+)(#.+)?["']/, '$2');
-        if (original_url in url_map) {
-          var new_url = url_map[original_url];
-          if (options.hashmap_rename) {
-            new_url = hashmapRename(original_url);
+      if (posterMatches) {
+        posterMatches.forEach(function (original_url) {
+          // url matches need to be trimmed
+          // possible example: "url('../fonts/iconfont/iconfont.eot?#iefix')"
+          // trim the beginning and end, potentially leading slashes and ../
+          original_url = original_url.replace(/<video[^\>]*[^\>\S]+poster=['"](\.\.\/)*\/?([^'"\)#]+)(#.+)?["']/, '$2');
+          if (original_url in url_map) {
+            var new_url = url_map[original_url];
+            if (options.hashmap_rename) {
+              new_url = hashmapRename(original_url);
+            }
+            if (options.prefix) {
+              new_url = options.prefix + new_url;
+            }
+            html = html.replace(original_url, new_url);
           }
-          if (options.prefix) {
-            new_url = options.prefix + new_url;
-          }
-          html = html.replace(original_url, new_url);
-        }
-      });
+        });
+      }
+      
+
       if (original !== html) {
         grunt.log.writeln('✔ '.green + file + (' was changed.').grey);
         grunt.file.write(file, html);
