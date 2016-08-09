@@ -1,9 +1,5 @@
 # grunt-htmlurlrev
 
-[![Build Status](https://travis-ci.org/jbuiss0n/grunt-htmlurlrev.png?branch=master)](https://travis-ci.org/jbuiss0n/grunt-htmlurlrev)
-[![NPM version](http://img.shields.io/npm/v/grunt-htmlurlrev.svg?style=flat)](https://www.npmjs.org/package/grunt-htmlurlrev)
-[![Dependency Status](https://david-dm.org/jbuiss0n/grunt-htmlurlrev.svg?style=flat)](https://david-dm.org/jbuiss0n/grunt-htmlurlrev)
-
 > Change asset paths inside html files based on output from grunt-filerev, grunt-hashmap, or other similar plugins
 
 > Created from [grunt-cssurlrev](https://github.com/richardbolt/grunt-cssurlrev), from [Richard Bolt](https://github.com/richardbolt) & [Theo Ephraim](https://github.com/theoephraim) who deserve all the credit for this module, as i just managed to handle html files and parse <img /> tags
